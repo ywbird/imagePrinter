@@ -1,14 +1,15 @@
 import cv2
 import urllib.request
 import sys
+import os
 from colr import Colr as C
 
 class imagePrinter():
 	def __init__(self, img_path, width):
 		if img_path.startswith('https://'):
 			self.url = img_path
-			urllib.request.urlretrieve(self.url, "%temp%temp.jpg")
-			self.img_path = "%temp%temp.jpg"
+			urllib.request.urlretrieve(self.url, 'temp.png')
+			self.img_path = "temp.png"
 		else:
 			self.img_path = img_path
 		self.img = cv2.imread(str(self.img_path), cv2.IMREAD_COLOR)
@@ -31,7 +32,11 @@ class imagePrinter():
 				self.line += self.colored(j, '██')
 			print(self.line)
 			self.line = ''
-				
+		try:
+			if self.url:
+				os.remove('temp.png')
+		except:
+			pass		
 	def colored(self, color, text):
 		return "\033[38;2;{};{};{}m{}\033[0m".format(color[2], color[1], color[0], text)
 
