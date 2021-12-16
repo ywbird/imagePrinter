@@ -37,5 +37,5 @@ class imagePrinter():
 				
 
 if __name__ == '__main__':
-	banana = imagePrinter(input('Image Path>'), int(input('Image Size>')))
-	banana.print()
+	temp = imagePrinter(sys.argv[1], sys.argv[2])
+	temp.print()
