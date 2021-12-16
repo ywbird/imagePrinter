@@ -3,9 +3,6 @@ import urllib.request
 import sys
 from colr import Colr as C
 
-def colored(color, text):
-    return "\033[38;2;{};{};{}m{}\033[0m".format(color[2], color[1], color[0], text)
-
 class imagePrinter():
 	def __init__(self, img_path, width):
 		if img_path.startswith('https://'):
@@ -31,10 +28,12 @@ class imagePrinter():
 		self.line = ''
 		for i in self.img_resized:
 			for j in i:
-				self.line += colored(j, '██')
+				self.line += self.colored(j, '██')
 			print(self.line)
 			self.line = ''
 				
+	def colored(self, color, text):
+    	return "\033[38;2;{};{};{}m{}\033[0m".format(color[2], color[1], color[0], text)
 
 if __name__ == '__main__':
 	temp = imagePrinter(sys.argv[1], sys.argv[2])
