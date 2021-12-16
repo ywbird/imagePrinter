@@ -33,7 +33,7 @@ class imagePrinter():
 			self.line = ''
 				
 	def colored(self, color, text):
-    	return "\033[38;2;{};{};{}m{}\033[0m".format(color[2], color[1], color[0], text)
+		return "\033[38;2;{};{};{}m{}\033[0m".format(color[2], color[1], color[0], text)
 
 if __name__ == '__main__':
 	temp = imagePrinter(sys.argv[1], sys.argv[2])
